@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ABEERR - Your one-stop destination for fashion and lifestyle shopping.">
+    <title>ABEERR - Online Shopping</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80'); /* Replace with your image file path */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+        }
+        header {
+            background-color: #ff3366;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-around;
+            background-color: #333;
+            padding: 10px 0;
+            align-items: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 15px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #575757;
+            border-radius: 5px;
+            transform: scale(1.1);
+        }
+
+        .icon-container {
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .icon-container img {
+            width: 24px;
+            height: 24px;
+            margin-left: 15px;
+            cursor: pointer;
+            transition: transform 0.3s, filter 0.3s;
+        }
+
+        .icon-container img:hover {
+            transform: scale(1.2);
+            filter: brightness(1.2);
+        }
+
+        /* Dropdown Menu Styling */
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 30px;
+            right: 0;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 200px;
+            padding: 10px;
+            z-index: 1;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 8px;
+            color: #333;
+            text-decoration: none;
+            border-bottom: 1px solid #ddd;
+            transition: background-color 0.3s;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: #f4f4f4;
+        }
+
+        .icon-container:hover .dropdown-menu {
+            display: block;
+        }
+
+        .search-bar {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .search-bar input {
+            width: 50%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px 0 0 5px;
+        }
+
+        .search-bar button {
+            padding: 10px;
+            border: none;
+            background-color: #ff3366;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .search-bar button:hover {
+            background-color: #e62e5c;
+            transform: scale(1.1);
+        }
+
+        .categories {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 20px;
+        }
+
+        .category {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin: 10px;
+            padding: 20px;
+            text-align: center;
+            width: 200px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .category:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .category img {
+            max-width: 100%;
+            border-radius: 5px;
+        }
+
+        .footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .footer a {
+            color: #ff3366;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .footer .links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .footer .links div {
+            margin: 10px;
+        }
+
+        .footer .links div ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .footer .links div ul li {
+            margin: 5px 0;
+        }
+
+        .footer .app-links {
+            margin-top: 20px;
+        }
+
+        .footer .app-links img {
+            width: 150px;
+            margin: 10px;
+        }
+
+        .footer .contact {
+            margin-top: 20px;
+        }
+
+        .wishlist-section {
+            padding: 40px;
+            text-align: center;
+            background-color: #fff;
+            margin-top: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .wishlist-section h2 {
+            color: #ff3366;
+        }
+
+        .brands-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .brand-item {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin: 10px;
+            padding: 20px;
+            text-align: center;
+            width: 200px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .brand-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .brand-item img {
+            max-width: 100%;
+            border-radius: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .search-bar input {
+                width: 70%;
+            }
+
+            .category {
+                width: 150px;
+            }
+
+            nav {
+                flex-wrap: wrap;
+            }
+
+            nav a {
+                padding: 5px 10px;
+            }
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchButton = document.querySelector('.search-bar button');
+            searchButton.addEventListener('click', () => {
+                const query = document.querySelector('.search-bar input').value;
+                if (query) {
+                    alert(`Searching for: ${query}`);
+                } else {
+                    alert('Please enter a search term.');
+                }
+            });
+
+            const categories = document.querySelectorAll('.category');
+            categories.forEach(category => {
+                category.addEventListener('click', () => {
+                    const categoryName = category.querySelector('h3').innerText;
+                    alert(`You selected: ${categoryName}`);
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Welcome to ABEERR - Your Fashion Destination</h1>
+    </header>
+    <nav>
+        <a href="index.html">Home</a>
+       <a href="mens-clothing.html">Men</a>
+        <a href="women.html">Women</a>
+        <a href="kids.html">Kids</a>
+        <a href="home&living.html">Home & Living</a>
+        <a href="beauty.html">Beauty</a>
+        <a href="#giftcards">Gift Cards</a>
+        <div class="icon-container">
+            <a href="bag.html"><img src="bag.webp" alt="Bag Icon" title="Bag"></a>
+            <a href="login.html">
+                <img src="profile.webp" alt="Profile Icon" title="Profile">
+            </a>
+            <!-- Dropdown Menu -->
+            <div class="dropdown-menu">
+                <a href="login.html">Login / Signup</a>
+                <a href="#orders">Orders</a>
+                <a href="#wishlist">Wishlist</a>
+                <a href="#giftcards">Gift Cards</a>
+                <a href="#contactus">Contact Us</a>
+                <a href="#-insider">Insider</a>
+                <a href="#ABEERR-credit">ABEERR Credit</a>
+                <a href="#coupons">Coupons</a>
+                <a href="#saved-cards">Saved Cards</a>
+                <a href="#saved-vpa">Saved VPA</a>
+                <a href="#saved-addresses">Saved Addresses</a>
+            </div>
+        </div>
+    </nav>
+    <div class="search-bar">
+        <input type="text" placeholder="Search for products, brands and more">
+        <button>Search</button>
+    </div>
+    <section class="categories">
+        <div class="category">
+            <img src="mens clothuing.jpg" alt="Men's Clothing">
+            <h3>Men's Clothing</h3>
+        </div>
+        <div class="category">
+            <img src="women clothi ng.webp" alt="Women's Clothing">
+            <h3>Women's Clothing</h3>
+        </div>
+        <div class="category">
+            <img src="kids clothing.webp" alt="Kids' Clothing">
+            <h3>Kids' Clothing</h3>
+        </div>
+        <div class="category">
+            <img src="home living.jpeg" alt="Home & Living">
+            <h3>Home & Living</h3>
+        </div>
+    </section>
+
+    <!-- Medal Worthy Brands Section -->
+    <div class="wishlist-section">
+        <h2>Medal Worthy Brands To Bag</h2>
+        <div class="brands-container">
+            <div class="brand-item">
+                <img src="brand 1.jpeg" alt="Brand 1">
+                <h3>Brand 1</h3>
+            </div>
+            <div class="brand-item">
+                <img src="brand 2.jpeg" alt="Brand 2">
+                <h3>Brand 2</h3>
+            </div>
+            <div class="brand-item">
+                <img src="brand 3.jpeg" alt="Brand 3">
+                <h3>Brand 3</h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- Grand Global Brands Section -->
+    <div class="wishlist-section">
+        <h2>Grand Global Brands</h2>
+        <div class="brands-container">
+            <div class="brand-item">
+                <img src="global brand 3.jpg" alt="Brand 4">
+                <h3>Brand 4</h3>
+            </div>
+            <div class="brand-item">
+                <img src="global brand 2.jpg" alt="Brand 5">
+                <h3>Brand 5</h3>
+            </div>
+            <div class="brand-item">
+                <img src="global brand.jpg" alt="Brand 6">
+                <h3>Brand 6</h3>
+            </div>
+        </div>
+
+
+    <!-- Categories Section -->
+    <section class="categories">
+        <div class="category">
+            <img src="clothing 1.jpeg" alt="Category 1">
+            <h3>Clothing</h3>
+        </div>
+        <div class="category">
+            <img src="footweae 2.avif" alt="Category 2">
+            <h3>Footwear</h3>
+        </div>
+        <div class="category">
+            <img src="acc1.jpg" alt="Category 3">
+            <h3>Accessories</h3>
+        </div>
+        <div class="category">
+            <img src="beauty 3.jpg" alt="Category 4">
+            <h3>Beauty</h3>
+        </div>
+    </section>
+    <!-- Categories Section -->
+    <section class="categories">
+        <div class="category">
+            <img src="clothing 2.jpeg" alt="Category 1">
+            <h3>Clothing</h3>
+        </div>
+        <div class="category">
+            <img src="footwear 1.avif" alt="Category 2">
+            <h3>Footwear</h3>
+        </div>
+        <div class="category">
+            <img src="acc2.png" alt="Category 3">
+            <h3>Accessories</h3>
+        </div>
+        <div class="category">
+            <img src="beauty 2.jpeg" alt="Category 4">
+            <h3>Beauty</h3>
+        </div>
+    </section>
+    <!-- Categories Section -->
+    <section class="categories">
+        <div class="category">
+            <img src="clothing 3.jpeg" alt="Category 1">
+            <h3>Clothing</h3>
+        </div>
+        <div class="category">
+            <img src="footwear 3.avif" alt="Category 2">
+            <h3>Footwear</h3>
+        </div>
+        <div class="category">
+            <img src="acc 3.jpg" alt="Category 3">
+            <h3>Accessories</h3>
+        </div>
+        <div class="category">
+            <img src="beauty 3.jpg" alt="Category 4">
+            <h3>Beauty</h3>
+        </div>
+    </section>
+</div>
+
+    <footer class="footer">
+        <div class="links">
+            <div>
+                <h4>Customer Care</h4>
+                <ul>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Returns</a></li>
+                    <li><a href="#">Shipping</a></li>
+                    <li><a href="#">Track Your Order</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>About ABEERR</h4>
+                <ul>
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Terms of Use</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="app-links">
+            <a href="#"><img src="play store.png" alt="Google Play Store"></a>
+            <a href="#"><img src="app store 2.png" alt="Apple App Store"></a>
+        </div>
+        <div class="contact">
+            <p>For inquiries, email us at <a href="mailto:support@abeerr.com">support@abeerr.com</a></p>
+        </div>
+    </footer>
+</body>
+</html>

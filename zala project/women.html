@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore the latest trends in women's fashion and lifestyle.">
+    <title>Women's Fashion - ABEERR</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        header {
+            background-color: #ff66cc;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+            padding: 10px 0;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 16px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .products-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px;
+        }
+
+        .product-item {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 10px;
+            padding: 15px;
+            text-align: center;
+            width: 200px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-item img {
+            max-width: 100%;
+            border-radius: 5px;
+        }
+
+        .product-item h3 {
+            margin: 10px 0;
+            color: #333;
+        }
+
+        .product-item p {
+            color: #777;
+            font-size: 14px;
+        }
+
+        .product-item button {
+            background-color: #ff66cc;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .product-item button:hover {
+            background-color: #e65cab;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 15px;
+            margin-top: 20px;
+        }
+
+        footer a {
+            color: #ff66cc;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <script>
+        // Function to add a product to the cart
+        function addToCart(productName, productPrice) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push({name: productName, price: productPrice});
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Women's Fashion</h1>
+        <p>Discover the latest trends and styles tailored for you.</p>
+    </header>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="mens-clothing.html">Men</a>
+        <a href="women.html">Women</a>
+        <a href="kids.html">Kids</a>
+        <a href="contact.html">Contact Us</a>
+    </nav>
+    <section class="products-container">
+        <div class="product-item">
+            <img src="floral.jpg" alt="Floral Dress">
+            <h3>Floral Dress</h3>
+            <p>Perfect for any occasion</p>
+            <p>₹199</p>
+            <button onclick="addToCart('Women\'s floral Dress', 199.99, 'floral.jpg')">Add to Cart</button>
+        </div>
+        <div class="product-item">
+            <img src="casual dress.webp" alt="Casual Top">
+            <h3>Casual Top</h3>
+            <p>Stylish and comfortable</p>
+            <p>₹191</p>
+            <button onclick="addToCart('Women\'s Casual dress', 191.99, 'casual dress.webp')">Add to Cart</button>
+        </div>
+        <div class="product-item">
+            <img src="party wear.jpg" alt="Party Wear">
+            <h3>Party Wear</h3>
+            <p>Glam up your evenings</p>
+            <p>₹1319.99</p>
+            <button onclick="addToCart('Women\'s Party Wear', 19.99, 'party wear.jpg')">Add to Cart</button>
+        </div>
+        <div class="product-item">
+            <img src="summer skirt.png" alt="Summer Skirt">
+            <h3>Summer Skirt</h3>
+            <p>Light and breezy</p>
+            <p>₹129.99</p>
+            <button onclick="addToCart('Women\'s Summer Skirt', 19.99, 'summer skirt.png')">Add to Cart</button>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2025 ABEERR. All Rights Reserved. | <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Use</a></p>
+    </footer>
+</body>
+</html>
